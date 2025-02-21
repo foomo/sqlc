@@ -258,6 +258,9 @@ func generate(req *plugin.GenerateRequest, options *opts.Options, enums []Enum, 
 		if !strings.HasSuffix(name, ".go") {
 			name += ".go"
 		}
+		if !strings.HasSuffix(name, "_gen.go") {
+			name = strings.TrimSuffix(name, ".go") + "_gen.go"
+		}
 		output[name] = string(code)
 		return nil
 	}
